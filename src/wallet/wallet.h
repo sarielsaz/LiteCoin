@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_WALLET_H
-#define BITCOIN_WALLET_WALLET_H
+#ifndef SARIELSAZ_WALLET_WALLET_H
+#define SARIELSAZ_WALLET_WALLET_H
 
 #include "amount.h"
 #include "policy/feerate.h"
@@ -1195,4 +1195,4 @@ bool CWallet::DummySignTx(CMutableTransaction &txNew, const ContainerType &coins
     return true;
 }
 
-#endif // BITCOIN_WALLET_WALLET_H
+#endif // SARIELSAZ_WALLET_WALLET_H

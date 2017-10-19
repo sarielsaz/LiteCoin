@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_SENDCOINSDIALOG_H
-#define BITCOIN_QT_SENDCOINSDIALOG_H
+#ifndef SARIELSAZ_QT_SENDCOINSDIALOG_H
+#define SARIELSAZ_QT_SENDCOINSDIALOG_H
 
 #include "walletmodel.h"
 
@@ -120,4 +120,4 @@ private:
     int secDelay;
 };
 
-#endif // BITCOIN_QT_SENDCOINSDIALOG_H
+#endif // SARIELSAZ_QT_SENDCOINSDIALOG_H

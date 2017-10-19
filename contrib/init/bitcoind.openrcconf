@@ -1,33 +1,33 @@
 # /etc/conf.d/sarielsazd: config file for /etc/init.d/sarielsazd
 
 # Config file location
-#BITCOIND_CONFIGFILE="/etc/sarielsaz/sarielsaz.conf"
+#SARIELSAZD_CONFIGFILE="/etc/sarielsaz/sarielsaz.conf"
 
-# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
-#BITCOIND_PIDDIR="/var/run/sarielsazd"
+# What directory to write pidfile to?  (created and owned by $SARIELSAZD_USER)
+#SARIELSAZD_PIDDIR="/var/run/sarielsazd"
 
 # What filename to give the pidfile
-#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/sarielsazd.pid"
+#SARIELSAZD_PIDFILE="${SARIELSAZD_PIDDIR}/sarielsazd.pid"
 
 # Where to write sarielsazd data (be mindful that the blockchain is large)
-#BITCOIND_DATADIR="/var/lib/sarielsazd"
+#SARIELSAZD_DATADIR="/var/lib/sarielsazd"
 
 # User and group to own sarielsazd process
-#BITCOIND_USER="sarielsaz"
-#BITCOIND_GROUP="sarielsaz"
+#SARIELSAZD_USER="sarielsaz"
+#SARIELSAZD_GROUP="sarielsaz"
 
 # Path to sarielsazd executable
-#BITCOIND_BIN="/usr/bin/sarielsazd"
+#SARIELSAZD_BIN="/usr/bin/sarielsazd"
 
 # Nice value to run sarielsazd under
-#BITCOIND_NICE=0
+#SARIELSAZD_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
-#BITCOIND_OPTS=""
+#SARIELSAZD_OPTS=""
 
 # The timeout in seconds OpenRC will wait for sarielsazd to terminate
 # after a SIGTERM has been raised.
 # Note that this will be mapped as argument to start-stop-daemon's
 # '--retry' option, which means you can specify a retry schedule
 # here. For more information see man 8 start-stop-daemon.
-BITCOIND_SIGTERM_TIMEOUT=60
+SARIELSAZD_SIGTERM_TIMEOUT=60

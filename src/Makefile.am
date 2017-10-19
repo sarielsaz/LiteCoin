@@ -18,28 +18,28 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+SARIELSAZ_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
-BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
+SARIELSAZ_INCLUDES += -I$(srcdir)/secp256k1/include
+SARIELSAZ_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBBITCOIN_SERVER=libsarielsaz_server.a
-LIBBITCOIN_COMMON=libsarielsaz_common.a
-LIBBITCOIN_CONSENSUS=libsarielsaz_consensus.a
-LIBBITCOIN_CLI=libsarielsaz_cli.a
-LIBBITCOIN_UTIL=libsarielsaz_util.a
-LIBBITCOIN_CRYPTO=crypto/libsarielsaz_crypto.a
-LIBBITCOINQT=qt/libsarielsazqt.a
+LIBSARIELSAZ_SERVER=libsarielsaz_server.a
+LIBSARIELSAZ_COMMON=libsarielsaz_common.a
+LIBSARIELSAZ_CONSENSUS=libsarielsaz_consensus.a
+LIBSARIELSAZ_CLI=libsarielsaz_cli.a
+LIBSARIELSAZ_UTIL=libsarielsaz_util.a
+LIBSARIELSAZ_CRYPTO=crypto/libsarielsaz_crypto.a
+LIBSARIELSAZQT=qt/libsarielsazqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libsarielsaz_zmq.a
+LIBSARIELSAZ_ZMQ=libsarielsaz_zmq.a
 endif
-if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libsarielsazconsensus.la
+if BUILD_SARIELSAZ_LIBS
+LIBSARIELSAZCONSENSUS=libsarielsazconsensus.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libsarielsaz_wallet.a
+LIBSARIELSAZ_WALLET=libsarielsaz_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -48,33 +48,33 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_SERVER) \
-  $(LIBBITCOIN_CLI) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_ZMQ)
+  $(LIBSARIELSAZ_CRYPTO) \
+  $(LIBSARIELSAZ_UTIL) \
+  $(LIBSARIELSAZ_COMMON) \
+  $(LIBSARIELSAZ_CONSENSUS) \
+  $(LIBSARIELSAZ_SERVER) \
+  $(LIBSARIELSAZ_CLI) \
+  $(LIBSARIELSAZ_WALLET) \
+  $(LIBSARIELSAZ_ZMQ)
 
-lib_LTLIBRARIES = $(LIBBITCOINCONSENSUS)
+lib_LTLIBRARIES = $(LIBSARIELSAZCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_BITCOIND
+if BUILD_SARIELSAZD
   bin_PROGRAMS += sarielsazd
 endif
 
-if BUILD_BITCOIN_UTILS
+if BUILD_SARIELSAZ_UTILS
   bin_PROGRAMS += sarielsaz-cli sarielsaz-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
 # sarielsaz core #
-BITCOIN_CORE_H = \
+SARIELSAZ_CORE_H = \
   addrdb.h \
   addrman.h \
   base58.h \
@@ -182,7 +182,7 @@ obj/build.h: FORCE
 libsarielsaz_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between sarielsazd and sarielsaz-qt
-libsarielsaz_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libsarielsaz_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libsarielsaz_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsarielsaz_server_a_SOURCES = \
   addrdb.cpp \
@@ -223,10 +223,10 @@ libsarielsaz_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(BITCOIN_CORE_H)
+  $(SARIELSAZ_CORE_H)
 
 if ENABLE_ZMQ
-libsarielsaz_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libsarielsaz_zmq_a_CPPFLAGS = $(SARIELSAZ_INCLUDES) $(ZMQ_CFLAGS)
 libsarielsaz_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsarielsaz_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
@@ -237,7 +237,7 @@ endif
 
 # wallet: shared between sarielsazd and sarielsaz-qt, but only linked
 # when wallet enabled
-libsarielsaz_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libsarielsaz_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES)
 libsarielsaz_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsarielsaz_wallet_a_SOURCES = \
   wallet/crypter.cpp \
@@ -249,7 +249,7 @@ libsarielsaz_wallet_a_SOURCES = \
   wallet/rpcwallet.cpp \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
-  $(BITCOIN_CORE_H)
+  $(SARIELSAZ_CORE_H)
 
 # crypto primitives library
 crypto_libsarielsaz_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
@@ -278,7 +278,7 @@ crypto_libsarielsaz_crypto_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libsarielsaz_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libsarielsaz_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES)
 libsarielsaz_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsarielsaz_consensus_a_SOURCES = \
   amount.h \
@@ -313,7 +313,7 @@ libsarielsaz_consensus_a_SOURCES = \
   version.h
 
 # common: shared between sarielsazd, and sarielsaz-qt and non-server tools
-libsarielsaz_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libsarielsaz_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES)
 libsarielsaz_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsarielsaz_common_a_SOURCES = \
   base58.cpp \
@@ -333,12 +333,12 @@ libsarielsaz_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(BITCOIN_CORE_H)
+  $(SARIELSAZ_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libsarielsaz_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libsarielsaz_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES)
 libsarielsaz_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsarielsaz_util_a_SOURCES = \
   support/lockedpool.cpp \
@@ -357,25 +357,25 @@ libsarielsaz_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(BITCOIN_CORE_H)
+  $(SARIELSAZ_CORE_H)
 
 if GLIBC_BACK_COMPAT
 libsarielsaz_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
 # cli: shared between sarielsaz-cli and sarielsaz-qt
-libsarielsaz_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libsarielsaz_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES)
 libsarielsaz_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsarielsaz_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(BITCOIN_CORE_H)
+  $(SARIELSAZ_CORE_H)
 
 nodist_libsarielsaz_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # sarielsazd binary #
 sarielsazd_SOURCES = sarielsazd.cpp
-sarielsazd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+sarielsazd_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES)
 sarielsazd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 sarielsazd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
@@ -384,14 +384,14 @@ sarielsazd_SOURCES += sarielsazd-res.rc
 endif
 
 sarielsazd_LDADD = \
-  $(LIBBITCOIN_SERVER) \
-  $(LIBBITCOIN_COMMON) \
+  $(LIBSARIELSAZ_SERVER) \
+  $(LIBSARIELSAZ_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_ZMQ) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBSARIELSAZ_UTIL) \
+  $(LIBSARIELSAZ_WALLET) \
+  $(LIBSARIELSAZ_ZMQ) \
+  $(LIBSARIELSAZ_CONSENSUS) \
+  $(LIBSARIELSAZ_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
@@ -401,7 +401,7 @@ sarielsazd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIU
 
 # sarielsaz-cli binary #
 sarielsaz_cli_SOURCES = sarielsaz-cli.cpp
-sarielsaz_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+sarielsaz_cli_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES) $(EVENT_CFLAGS)
 sarielsaz_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 sarielsaz_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
@@ -410,17 +410,17 @@ sarielsaz_cli_SOURCES += sarielsaz-cli-res.rc
 endif
 
 sarielsaz_cli_LDADD = \
-  $(LIBBITCOIN_CLI) \
+  $(LIBSARIELSAZ_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CRYPTO)
+  $(LIBSARIELSAZ_UTIL) \
+  $(LIBSARIELSAZ_CRYPTO)
 
 sarielsaz_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # sarielsaz-tx binary #
 sarielsaz_tx_SOURCES = sarielsaz-tx.cpp
-sarielsaz_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+sarielsaz_tx_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES)
 sarielsaz_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 sarielsaz_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
@@ -430,17 +430,17 @@ endif
 
 sarielsaz_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBSARIELSAZ_COMMON) \
+  $(LIBSARIELSAZ_UTIL) \
+  $(LIBSARIELSAZ_CONSENSUS) \
+  $(LIBSARIELSAZ_CRYPTO) \
   $(LIBSECP256K1)
 
 sarielsaz_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # sarielsazconsensus library #
-if BUILD_BITCOIN_LIBS
+if BUILD_SARIELSAZ_LIBS
 include_HEADERS = script/sarielsazconsensus.h
 libsarielsazconsensus_la_SOURCES = $(crypto_libsarielsaz_crypto_a_SOURCES) $(libsarielsaz_consensus_a_SOURCES)
 
@@ -450,7 +450,7 @@ endif
 
 libsarielsazconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
 libsarielsazconsensus_la_LIBADD = $(LIBSECP256K1)
-libsarielsazconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
+libsarielsazconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_SARIELSAZ_INTERNAL
 libsarielsazconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif

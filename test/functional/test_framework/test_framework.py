@@ -394,7 +394,7 @@ class SarielsazTestFramework():
             # Create cache directories, run sarielsazds:
             for i in range(MAX_NODES):
                 datadir = initialize_datadir(self.options.cachedir, i)
-                args = [os.getenv("BITCOIND", "sarielsazd"), "-server", "-keypool=1", "-datadir=" + datadir, "-discover=0"]
+                args = [os.getenv("SARIELSAZD", "sarielsazd"), "-server", "-keypool=1", "-datadir=" + datadir, "-discover=0"]
                 if i > 0:
                     args.append("-connect=127.0.0.1:" + str(p2p_port(0)))
                 self.nodes.append(TestNode(i, self.options.cachedir, extra_args=[], rpchost=None, timewait=None, binary=None, stderr=None, mocktime=self.mocktime, coverage_dir=None))
@@ -461,10 +461,10 @@ class ComparisonTestFramework(SarielsazTestFramework):
 
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("BITCOIND", "sarielsazd"),
+                          default=os.getenv("SARIELSAZD", "sarielsazd"),
                           help="sarielsazd binary to test")
         parser.add_option("--refbinary", dest="refbinary",
-                          default=os.getenv("BITCOIND", "sarielsazd"),
+                          default=os.getenv("SARIELSAZD", "sarielsazd"),
                           help="sarielsazd binary to use for reference nodes (if any)")
 
     def setup_network(self):

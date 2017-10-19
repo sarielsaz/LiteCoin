@@ -19,14 +19,14 @@ fi
 RETVAL=0
 
 prog=sarielsazd
-# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/sarielsazd
-lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/sarielsazd}
+# you can override the lockfile via SARIELSAZD_LOCKFILE in /etc/sysconfig/sarielsazd
+lockfile=${SARIELSAZD_LOCKFILE-/var/lock/subsys/sarielsazd}
 
-# sarielsazd defaults to /usr/bin/sarielsazd, override with BITCOIND_BIN
-sarielsazd=${BITCOIND_BIN-/usr/bin/sarielsazd}
+# sarielsazd defaults to /usr/bin/sarielsazd, override with SARIELSAZD_BIN
+sarielsazd=${SARIELSAZD_BIN-/usr/bin/sarielsazd}
 
-# sarielsazd opts default to -disablewallet, override with BITCOIND_OPTS
-sarielsazd_opts=${BITCOIND_OPTS--disablewallet}
+# sarielsazd opts default to -disablewallet, override with SARIELSAZD_OPTS
+sarielsazd_opts=${SARIELSAZD_OPTS--disablewallet}
 
 start() {
     echo -n $"Starting $prog: "

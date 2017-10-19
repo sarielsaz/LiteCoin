@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINGUI_H
-#define BITCOIN_QT_BITCOINGUI_H
+#ifndef SARIELSAZ_QT_SARIELSAZGUI_H
+#define SARIELSAZ_QT_SARIELSAZGUI_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/sarielsaz-config.h"
@@ -272,4 +272,4 @@ private Q_SLOTS:
     void onMenuSelection(QAction* action);
 };
 
-#endif // BITCOIN_QT_BITCOINGUI_H
+#endif // SARIELSAZ_QT_SARIELSAZGUI_H

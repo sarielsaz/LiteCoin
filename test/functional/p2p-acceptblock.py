@@ -57,7 +57,7 @@ from test_framework.blocktools import create_block, create_coinbase
 class AcceptBlockTest(SarielsazTestFramework):
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("BITCOIND", "sarielsazd"),
+                          default=os.getenv("SARIELSAZD", "sarielsazd"),
                           help="sarielsazd binary to test")
 
     def set_test_params(self):

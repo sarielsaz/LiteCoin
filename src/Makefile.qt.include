@@ -161,7 +161,7 @@ QT_MOC_CPP = \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp
 
-BITCOIN_MM = \
+SARIELSAZ_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
@@ -182,7 +182,7 @@ PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
 PROTOBUF_PROTO = qt/paymentrequest.proto
 
-BITCOIN_QT_H = \
+SARIELSAZ_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
@@ -294,7 +294,7 @@ RES_ICONS = \
   qt/res/icons/warning.png \
   qt/res/icons/verify.png
 
-BITCOIN_QT_BASE_CPP = \
+SARIELSAZ_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
   qt/sarielsazaddressvalidator.cpp \
   qt/sarielsazamountfield.cpp \
@@ -318,9 +318,9 @@ BITCOIN_QT_BASE_CPP = \
   qt/trafficgraphwidget.cpp \
   qt/utilitydialog.cpp
 
-BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+SARIELSAZ_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
 
-BITCOIN_QT_WALLET_CPP = \
+SARIELSAZ_QT_WALLET_CPP = \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
@@ -348,28 +348,28 @@ BITCOIN_QT_WALLET_CPP = \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp
 
-BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
+SARIELSAZ_QT_CPP = $(SARIELSAZ_QT_BASE_CPP)
 if TARGET_WINDOWS
-BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
+SARIELSAZ_QT_CPP += $(SARIELSAZ_QT_WINDOWS_CPP)
 endif
 if ENABLE_WALLET
-BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
+SARIELSAZ_QT_CPP += $(SARIELSAZ_QT_WALLET_CPP)
 endif
 
 RES_IMAGES = 
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/sarielsaz-qt-res.rc
+SARIELSAZ_RC = qt/res/sarielsaz-qt-res.rc
 
-BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+SARIELSAZ_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
 
-qt_libsarielsazqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_libsarielsazqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES) $(SARIELSAZ_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 qt_libsarielsazqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libsarielsazqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+qt_libsarielsazqt_a_SOURCES = $(SARIELSAZ_QT_CPP) $(SARIELSAZ_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
 nodist_qt_libsarielsazqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
@@ -389,25 +389,25 @@ $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
 # sarielsaz-qt binary #
-qt_sarielsaz_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_sarielsaz_qt_CPPFLAGS = $(AM_CPPFLAGS) $(SARIELSAZ_INCLUDES) $(SARIELSAZ_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 qt_sarielsaz_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
 qt_sarielsaz_qt_SOURCES = qt/sarielsaz.cpp
 if TARGET_DARWIN
-  qt_sarielsaz_qt_SOURCES += $(BITCOIN_MM)
+  qt_sarielsaz_qt_SOURCES += $(SARIELSAZ_MM)
 endif
 if TARGET_WINDOWS
-  qt_sarielsaz_qt_SOURCES += $(BITCOIN_RC)
+  qt_sarielsaz_qt_SOURCES += $(SARIELSAZ_RC)
 endif
-qt_sarielsaz_qt_LDADD = qt/libsarielsazqt.a $(LIBBITCOIN_SERVER)
+qt_sarielsaz_qt_LDADD = qt/libsarielsazqt.a $(LIBSARIELSAZ_SERVER)
 if ENABLE_WALLET
-qt_sarielsaz_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_sarielsaz_qt_LDADD += $(LIBSARIELSAZ_WALLET)
 endif
 if ENABLE_ZMQ
-qt_sarielsaz_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_sarielsaz_qt_LDADD += $(LIBSARIELSAZ_ZMQ) $(ZMQ_LIBS)
 endif
-qt_sarielsaz_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_sarielsaz_qt_LDADD += $(LIBSARIELSAZ_CLI) $(LIBSARIELSAZ_COMMON) $(LIBSARIELSAZ_UTIL) $(LIBSARIELSAZ_CONSENSUS) $(LIBSARIELSAZ_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 qt_sarielsaz_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
@@ -422,7 +422,7 @@ $(srcdir)/qt/sarielsazstrings.cpp: $(libsarielsaz_server_a_SOURCES) $(libsariels
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" COPYRIGHT_HOLDERS_SUBSTITUTION="$(COPYRIGHT_HOLDERS_SUBSTITUTION)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: $(srcdir)/qt/sarielsazstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/sarielsaz.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: $(srcdir)/qt/sarielsazstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(SARIELSAZ_QT_BASE_CPP) qt/sarielsaz.cpp $(SARIELSAZ_QT_WINDOWS_CPP) $(SARIELSAZ_QT_WALLET_CPP) $(SARIELSAZ_QT_H) $(SARIELSAZ_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
 	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/sarielsaz_en.ts
 
@@ -443,7 +443,7 @@ CLEAN_QT = $(nodist_qt_libsarielsazqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcd
 CLEANFILES += $(CLEAN_QT)
 
 sarielsaz_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libsarielsazqt_a_OBJECTS) $(qt_sarielsaz_qt_OBJECTS) qt/sarielsaz-qt$(EXEEXT) $(LIBBITCOINQT)
+	rm -f $(CLEAN_QT) $(qt_libsarielsazqt_a_OBJECTS) $(qt_sarielsaz_qt_OBJECTS) qt/sarielsaz-qt$(EXEEXT) $(LIBSARIELSAZQT)
 
 sarielsaz_qt : qt/sarielsaz-qt$(EXEEXT)
 

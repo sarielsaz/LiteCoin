@@ -125,5 +125,5 @@ int sarielsazconsensus_verify_script(const unsigned char *scriptPubKey, unsigned
 unsigned int sarielsazconsensus_version()
 {
     // Just use the API version for now
-    return BITCOINCONSENSUS_API_VER;
+    return SARIELSAZCONSENSUS_API_VER;
 }
