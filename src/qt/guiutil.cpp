@@ -4,8 +4,8 @@
 
 #include "guiutil.h"
 
-#include "bitcoinaddressvalidator.h"
-#include "bitcoinunits.h"
+#include "sarielsazaddressvalidator.h"
+#include "sarielsazunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 
@@ -146,8 +146,8 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 
 bool parseSarielsazURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no bitcoin: URI
-    if(!uri.isValid() || uri.scheme() != QString("bitcoin"))
+    // return if URI is not valid or is no sarielsaz: URI
+    if(!uri.isValid() || uri.scheme() != QString("sarielsaz"))
         return false;
 
     SendCoinsRecipient rv;
@@ -207,13 +207,13 @@ bool parseSarielsazURI(const QUrl &uri, SendCoinsRecipient *out)
 
 bool parseSarielsazURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert bitcoin:// to bitcoin:
+    // Convert sarielsaz:// to sarielsaz:
     //
-    //    Cannot handle this later, because bitcoin:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because sarielsaz:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("bitcoin://", Qt::CaseInsensitive))
+    if(uri.startsWith("sarielsaz://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 10, "bitcoin:");
+        uri.replace(0, 10, "sarielsaz:");
     }
     QUrl uriInstance(uri);
     return parseSarielsazURI(uriInstance, out);
@@ -221,7 +221,7 @@ bool parseSarielsazURI(QString uri, SendCoinsRecipient *out)
 
 QString formatSarielsazURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("bitcoin:%1").arg(info.address);
+    QString ret = QString("sarielsaz:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
@@ -428,7 +428,7 @@ bool openSarielsazConf()
     
     configFile.close();
     
-    /* Open bitcoin.conf with the associated application */
+    /* Open sarielsaz.conf with the associated application */
     return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
 
@@ -714,8 +714,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "bitcoin.desktop";
-    return GetAutostartDir() / strprintf("bitcoin-%s.lnk", chain);
+        return GetAutostartDir() / "sarielsaz.desktop";
+    return GetAutostartDir() / strprintf("sarielsaz-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -755,7 +755,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a bitcoin.desktop file to the autostart directory:
+        // Write a sarielsaz.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
@@ -787,7 +787,7 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
         return nullptr;
     }
     
-    // loop through the list of startup items and try to find the bitcoin app
+    // loop through the list of startup items and try to find the sarielsaz app
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
@@ -821,38 +821,38 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef bitcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    if (bitcoinAppUrl == nullptr) {
+    CFURLRef sarielsazAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    if (sarielsazAppUrl == nullptr) {
         return false;
     }
     
     LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, sarielsazAppUrl);
 
-    CFRelease(bitcoinAppUrl);
+    CFRelease(sarielsazAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef bitcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    if (bitcoinAppUrl == nullptr) {
+    CFURLRef sarielsazAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    if (sarielsazAppUrl == nullptr) {
         return false;
     }
     
     LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, sarielsazAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add bitcoin app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, bitcoinAppUrl, nullptr, nullptr);
+        // add sarielsaz app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, sarielsazAppUrl, nullptr, nullptr);
     }
     else if(!fAutoStart && foundItem) {
         // remove item
         LSSharedFileListItemRemove(loginItems, foundItem);
     }
     
-    CFRelease(bitcoinAppUrl);
+    CFRelease(sarielsazAppUrl);
     return true;
 }
 #pragma GCC diagnostic pop

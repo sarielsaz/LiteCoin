@@ -1,6 +1,6 @@
 [Protocol]
-exec=bitcoin-qt '%u'
-protocol=bitcoin
+exec=sarielsaz-qt '%u'
+protocol=sarielsaz
 input=none
 output=none
 helper=true

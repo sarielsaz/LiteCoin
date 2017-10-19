@@ -10,7 +10,7 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between bitcoin-cli and bitcoind)
+ * CBaseChainParams defines the base parameters (shared between sarielsaz-cli and sarielsazd)
  * of a given instance of the Sarielsaz system.
  */
 class CBaseChainParams

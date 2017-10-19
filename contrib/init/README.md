@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: bitcoind.service
-Upstart: bitcoind.conf
-OpenRC:  bitcoind.openrc
-         bitcoind.openrcconf
-CentOS:  bitcoind.init
-OS X:    org.bitcoin.bitcoind.plist
+SystemD: sarielsazd.service
+Upstart: sarielsazd.conf
+OpenRC:  sarielsazd.openrc
+         sarielsazd.openrcconf
+CentOS:  sarielsazd.init
+OS X:    org.sarielsaz.sarielsazd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

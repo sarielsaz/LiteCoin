@@ -1,5 +1,5 @@
 Sarielsaz-Qt version 0.8.3 is now available from:
-  http://sourceforge.net/projects/bitcoin/files/Sarielsaz/bitcoin-0.8.3/
+  http://sourceforge.net/projects/sarielsaz/files/Sarielsaz/sarielsaz-0.8.3/
 
 This is a maintenance release to fix a denial-of-service attack that
 can cause nodes to crash.

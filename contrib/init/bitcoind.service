@@ -3,13 +3,13 @@ Description=Sarielsaz's distributed currency daemon
 After=network.target
 
 [Service]
-User=bitcoin
-Group=bitcoin
+User=sarielsaz
+Group=sarielsaz
 
 Type=forking
-PIDFile=/var/lib/bitcoind/bitcoind.pid
-ExecStart=/usr/bin/bitcoind -daemon -pid=/var/lib/bitcoind/bitcoind.pid \
--conf=/etc/bitcoin/bitcoin.conf -datadir=/var/lib/bitcoind -disablewallet
+PIDFile=/var/lib/sarielsazd/sarielsazd.pid
+ExecStart=/usr/bin/sarielsazd -daemon -pid=/var/lib/sarielsazd/sarielsazd.pid \
+-conf=/etc/sarielsaz/sarielsaz.conf -datadir=/var/lib/sarielsazd -disablewallet
 
 Restart=always
 PrivateTmp=true

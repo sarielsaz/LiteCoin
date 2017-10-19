@@ -1,13 +1,13 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Sarielsaz
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
- irc://#bitcoin@freenode.net
+ irc://#sarielsaz@freenode.net
 Source: https://github.com/sarielsaz/sarielsaz
 
 Files: *
 Copyright: 2009-2017, Sarielsaz Core Developers
 License: Expat
-Comment: The Sarielsaz Core Developers encompasses the current developers listed on bitcoin.org,
+Comment: The Sarielsaz Core Developers encompasses the current developers listed on sarielsaz.org,
          as well as the numerous contributors to the project.
 
 Files: debian/*
@@ -78,12 +78,12 @@ License: Expat
 Comment: Modifications of Stephan Hutchings Typicons
 
 Files: src/qt/res/icons/about.png
-       src/qt/res/icons/bitcoin.*
-       share/pixmaps/bitcoin*
-       src/qt/res/src/bitcoin.svg
+       src/qt/res/icons/sarielsaz.*
+       share/pixmaps/sarielsaz*
+       src/qt/res/src/sarielsaz.svg
 Copyright: Bitboy, Jonas Schnelli
 License: public-domain
-Comment: Site: https://bitcointalk.org/?topic=1756.0
+Comment: Site: https://sarielsaztalk.org/?topic=1756.0
 
 
 License: Expat

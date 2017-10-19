@@ -1,10 +1,10 @@
 Sarielsaz version 0.6.0 is now available for download at:
-http://sourceforge.net/projects/bitcoin/files/Sarielsaz/bitcoin-0.6.0/test/
+http://sourceforge.net/projects/sarielsaz/files/Sarielsaz/sarielsaz-0.6.0/test/
 
 This release includes more than 20 language localizations.
 More translations are welcome; join the
 project at Transifex to help:
-https://www.transifex.net/projects/p/bitcoin/
+https://www.transifex.net/projects/p/sarielsaz/
 
 Please report bugs using the issue tracker at github:
 https://github.com/sarielsaz/sarielsaz/issues
@@ -17,9 +17,9 @@ https://github.com/sarielsaz/sarielsaz/zipball/v0.6.0  # .zip
 
 For Ubuntu users, there is a ppa maintained by Matt Corallo which
 you can add to your system so that it will automatically keep
-bitcoin up-to-date.  Just type
-sudo apt-add-repository ppa:bitcoin/bitcoin
-in your terminal, then install the bitcoin-qt package.
+sarielsaz up-to-date.  Just type
+sudo apt-add-repository ppa:sarielsaz/sarielsaz
+in your terminal, then install the sarielsaz-qt package.
 
 
 KNOWN ISSUES
@@ -44,17 +44,17 @@ and receiving addresses.
 New context menu on addresses to copy/edit/delete them.
 
 New Sign Message dialog that allows you to prove that you
-own a bitcoin address by creating a digital
+own a sarielsaz address by creating a digital
 signature.
 
 New wallets created with this version will
 use 33-byte 'compressed' public keys instead of
 65-byte public keys, resulting in smaller
-transactions and less traffic on the bitcoin
+transactions and less traffic on the sarielsaz
 network. The shorter keys are already supported
 by the network but wallet.dat files containing
 short keys are not compatible with earlier
-versions of Sarielsaz-Qt/bitcoind.
+versions of Sarielsaz-Qt/sarielsazd.
 
 New command-line argument -blocknotify=<command>
 that will spawn a shell process to run <command> 
@@ -104,11 +104,11 @@ attacks were fixed.
 
 NOT YET IMPLEMENTED FEATURES
 
-Support for clicking on bitcoin: URIs and
+Support for clicking on sarielsaz: URIs and
 opening/launching Sarielsaz-Qt is available only on Linux,
 and only if you configure your desktop to launch
 Sarielsaz-Qt. All platforms support dragging and dropping
-bitcoin: URIs onto the Sarielsaz-Qt window to start
+sarielsaz: URIs onto the Sarielsaz-Qt window to start
 payment.
 
 
@@ -117,7 +117,7 @@ PRELIMINARY SUPPORT FOR MULTISIGNATURE TRANSACTIONS
 This release has preliminary support for multisignature
 transactions-- transactions that require authorization
 from more than one person or device before they
-will be accepted by the bitcoin network.
+will be accepted by the sarielsaz network.
 
 Prior to this release, multisignature transactions
 were considered 'non-standard' and were ignored;
@@ -131,7 +131,7 @@ once enough of the network has upgraded so relaying
 and validating them is robust.
 
 For this release, creation and testing of multisignature
-transactions is limited to the bitcoin test network using
+transactions is limited to the sarielsaz test network using
 the "addmultisigaddress" JSON-RPC api call.
 
 Short multisignature address support is included in this

@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "bitcoinamountfield.h"
+#include "sarielsazamountfield.h"
 
-#include "bitcoinunits.h"
+#include "sarielsazunits.h"
 #include "guiconstants.h"
 #include "qvaluecombobox.h"
 
@@ -188,7 +188,7 @@ Q_SIGNALS:
     void valueChanged();
 };
 
-#include "bitcoinamountfield.moc"
+#include "sarielsazamountfield.moc"
 
 SarielsazAmountField::SarielsazAmountField(QWidget *parent) :
     QWidget(parent),

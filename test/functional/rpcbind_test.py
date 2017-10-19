@@ -2,7 +2,7 @@
 # Copyright (c) 2014-2016 The Sarielsaz Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test running bitcoind with the -rpcbind and -rpcallowip options."""
+"""Test running sarielsazd with the -rpcbind and -rpcallowip options."""
 
 import socket
 import sys

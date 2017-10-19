@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include "config/sarielsaz-config.h"
 #endif
 
 #include "chainparams.h"
@@ -30,7 +30,7 @@
  *
  * \section intro_sec Introduction
  *
- * This is the developer documentation of the reference client for an experimental new digital currency called Sarielsaz (https://www.bitcoin.org/),
+ * This is the developer documentation of the reference client for an experimental new digital currency called Sarielsaz (https://www.sarielsaz.org/),
  * which enables instant payments to anyone, anywhere in the world. Sarielsaz uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are carried out collectively by the network.
  *
@@ -70,7 +70,7 @@ bool AppInit(int argc, char* argv[])
     //
     // Parameters
     //
-    // If Qt is used, parameters/bitcoin.conf are parsed in qt/bitcoin.cpp's main()
+    // If Qt is used, parameters/sarielsaz.conf are parsed in qt/sarielsaz.cpp's main()
     gArgs.ParseParameters(argc, argv);
 
     // Process help and version before taking care about datadir
@@ -85,7 +85,7 @@ bool AppInit(int argc, char* argv[])
         else
         {
             strUsage += "\n" + _("Usage:") + "\n" +
-                  "  bitcoind [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
+                  "  sarielsazd [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
 
             strUsage += "\n" + HelpMessage(HMM_BITCOIND);
         }
@@ -119,12 +119,12 @@ bool AppInit(int argc, char* argv[])
         // Error out when loose non-argument tokens are encountered on command line
         for (int i = 1; i < argc; i++) {
             if (!IsSwitchChar(argv[i][0])) {
-                fprintf(stderr, "Error: Command line contains unexpected token '%s', see bitcoind -h for a list of options.\n", argv[i]);
+                fprintf(stderr, "Error: Command line contains unexpected token '%s', see sarielsazd -h for a list of options.\n", argv[i]);
                 exit(EXIT_FAILURE);
             }
         }
 
-        // -server defaults to true for bitcoind but not for the GUI so do this here
+        // -server defaults to true for sarielsazd but not for the GUI so do this here
         gArgs.SoftSetBoolArg("-server", true);
         // Set this early so that parameter interactions go to console
         InitLogging();
@@ -189,7 +189,7 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
-    // Connect bitcoind signal handlers
+    // Connect sarielsazd signal handlers
     noui_connect();
 
     return (AppInit(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE);

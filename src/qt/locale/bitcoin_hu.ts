@@ -246,8 +246,8 @@
         <translation>Fül eszköztár</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>Fizetési kérelem (QR-kódot és "bitcoin:" URI azonosítót hoz létre)</translation>
+        <source>Request payments (generates QR codes and sarielsaz: URIs)</source>
+        <translation>Fizetési kérelem (QR-kódot és "sarielsaz:" URI azonosítót hoz létre)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -258,8 +258,8 @@
         <translation>A használt fogadó címek és címkék megtekintése</translation>
     </message>
     <message>
-        <source>Open a bitcoin: URI or payment request</source>
-        <translation>"bitcoin:" URI azonosító vagy fizetési kérelem megnyitása</translation>
+        <source>Open a sarielsaz: URI or payment request</source>
+        <translation>"sarielsaz:" URI azonosító vagy fizetési kérelem megnyitása</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -1376,7 +1376,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>sarielsaz-core</name>
     <message>
         <source>Options:</source>
         <translation>Opciók
@@ -1561,7 +1561,7 @@
     </message>
     <message>
         <source>Insufficient funds</source>
-        <translation>Nincs elég bitcoinod.</translation>
+        <translation>Nincs elég sarielsazod.</translation>
     </message>
     <message>
         <source>Loading block index...</source>

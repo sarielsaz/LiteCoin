@@ -20,7 +20,7 @@ public:
     State validate(QString &input, int &pos) const;
 };
 
-/** Sarielsaz address widget validator, checks for a valid bitcoin address.
+/** Sarielsaz address widget validator, checks for a valid sarielsaz address.
  */
 class SarielsazAddressCheckValidator : public QValidator
 {

@@ -230,8 +230,8 @@
         <translation>Bara de unelte</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>Cereţi plăţi (generează coduri QR şi bitcoin-uri: URls)</translation>
+        <source>Request payments (generates QR codes and sarielsaz: URIs)</source>
+        <translation>Cereţi plăţi (generează coduri QR şi sarielsaz-uri: URls)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -242,8 +242,8 @@
         <translation>Arată lista de adrese pentru primire şi etichetele</translation>
     </message>
     <message>
-        <source>Open a bitcoin: URI or payment request</source>
-        <translation>Deschidere bitcoin: o adresa URI sau o cerere de plată</translation>
+        <source>Open a sarielsaz: URI or payment request</source>
+        <translation>Deschidere sarielsaz: o adresa URI sau o cerere de plată</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -725,7 +725,7 @@
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Alegeţi subdiviziunea folosită la afişarea interfeţei şi la trimiterea de bitcoin.</translation>
+        <translation>Alegeţi subdiviziunea folosită la afişarea interfeţei şi la trimiterea de sarielsaz.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -765,7 +765,7 @@
     </message>
     <message>
         <source>The supplied proxy address is invalid.</source>
-        <translation>Adresa bitcoin pe care aţi specificat-o nu este validă.</translation>
+        <translation>Adresa sarielsaz pe care aţi specificat-o nu este validă.</translation>
     </message>
 </context>
 <context>
@@ -1385,7 +1385,7 @@
     </message>
     <message>
         <source>The Sarielsaz address to send the payment to</source>
-        <translation>Adresa bitcoin către care se face plata</translation>
+        <translation>Adresa sarielsaz către care se face plata</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1412,8 +1412,8 @@
         <translation>Introduceţi eticheta pentru ca această adresa să fie introdusă în lista de adrese folosite</translation>
     </message>
     <message>
-        <source>A message that was attached to the bitcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Sarielsaz network.</source>
-        <translation>un mesaj a fost ataşat la bitcoin: URI care va fi stocat cu tranzacţia pentru referinţa dvs. Notă: Acest mesaj nu va fi trimis către reţeaua bitcoin.</translation>
+        <source>A message that was attached to the sarielsaz: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Sarielsaz network.</source>
+        <translation>un mesaj a fost ataşat la sarielsaz: URI care va fi stocat cu tranzacţia pentru referinţa dvs. Notă: Acest mesaj nu va fi trimis către reţeaua sarielsaz.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -1568,7 +1568,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>sarielsaz-core</name>
     <message>
         <source>Options:</source>
         <translation>Opţiuni:</translation>

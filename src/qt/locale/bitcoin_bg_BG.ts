@@ -418,7 +418,7 @@
     </message>
     </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>sarielsaz-core</name>
     <message>
         <source>Sarielsaz Core</source>
         <translation>Биткойн ядро</translation>

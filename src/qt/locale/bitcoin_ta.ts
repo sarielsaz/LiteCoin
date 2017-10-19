@@ -706,7 +706,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>sarielsaz-core</name>
     <message>
         <source>Sarielsaz Core</source>
         <translation>Sarielsaz மையம்</translation>

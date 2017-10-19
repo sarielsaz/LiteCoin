@@ -3,7 +3,7 @@ release-notes at release time)
 
 Sarielsaz Core version *version* is now available from:
 
-  <https://bitcoin.org/bin/bitcoin-core-*version*/>
+  <https://sarielsaz.org/bin/sarielsaz-core-*version*/>
 
 This is a new major version release, including new features, various bugfixes
 and performance improvements, as well as updated translations.
@@ -14,7 +14,7 @@ Please report bugs using the issue tracker at GitHub:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitcoincore.org/en/list/announcements/join/>
+  <https://sarielsazcore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
@@ -22,7 +22,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the 
 installer (on Windows) or just copy over `/Applications/Sarielsaz-Qt` (on Mac)
-or `bitcoind`/`bitcoin-qt` (on Linux).
+or `sarielsazd`/`sarielsaz-qt` (on Linux).
 
 The first time you run version 0.15.0, your chainstate database will be converted to a
 new format, which will take anywhere from a few minutes to half an hour,
@@ -92,4 +92,4 @@ Credits
 Thanks to everyone who directly contributed to this release:
 
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitcoin/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/sarielsaz/).

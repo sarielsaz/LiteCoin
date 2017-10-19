@@ -44,7 +44,7 @@ namespace GUIUtil
     void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent);
     void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
-    // Parse "bitcoin:" URI into recipient object, return true on successful parsing
+    // Parse "sarielsaz:" URI into recipient object, return true on successful parsing
     bool parseSarielsazURI(const QUrl &uri, SendCoinsRecipient *out);
     bool parseSarielsazURI(QString uri, SendCoinsRecipient *out);
     QString formatSarielsazURI(const SendCoinsRecipient &info);

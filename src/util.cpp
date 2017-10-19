@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include "config/sarielsaz-config.h"
 #endif
 
 #include "util.h"
@@ -87,8 +87,8 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char * const BITCOIN_CONF_FILENAME = "bitcoin.conf";
-const char * const BITCOIN_PID_FILENAME = "bitcoind.pid";
+const char * const BITCOIN_CONF_FILENAME = "sarielsaz.conf";
+const char * const BITCOIN_PID_FILENAME = "sarielsazd.pid";
 
 ArgsManager gArgs;
 bool fPrintToConsole = false;
@@ -503,7 +503,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(nullptr, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "bitcoin";
+    const char* pszModule = "sarielsaz";
 #endif
     if (pex)
         return strprintf(
@@ -525,7 +525,7 @@ fs::path GetDefaultDataDir()
     // Windows < Vista: C:\Documents and Settings\Username\Application Data\Sarielsaz
     // Windows >= Vista: C:\Users\Username\AppData\Roaming\Sarielsaz
     // Mac: ~/Library/Application Support/Sarielsaz
-    // Unix: ~/.bitcoin
+    // Unix: ~/.sarielsaz
 #ifdef WIN32
     // Windows
     return GetSpecialFolderPath(CSIDL_APPDATA) / "Sarielsaz";
@@ -541,7 +541,7 @@ fs::path GetDefaultDataDir()
     return pathRet / "Library/Application Support/Sarielsaz";
 #else
     // Unix
-    return pathRet / ".bitcoin";
+    return pathRet / ".sarielsaz";
 #endif
 #endif
 }
@@ -600,7 +600,7 @@ void ArgsManager::ReadConfigFile(const std::string& confPath)
 {
     fs::ifstream streamConfig(GetConfigFile(confPath));
     if (!streamConfig.good())
-        return; // No bitcoin.conf file is OK
+        return; // No sarielsaz.conf file is OK
 
     {
         LOCK(cs_args);
@@ -609,7 +609,7 @@ void ArgsManager::ReadConfigFile(const std::string& confPath)
 
         for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
         {
-            // Don't overwrite existing settings so command line settings override bitcoin.conf
+            // Don't overwrite existing settings so command line settings override sarielsaz.conf
             std::string strKey = std::string("-") + it->string_key;
             std::string strValue = it->value[0];
             InterpretNegativeSetting(strKey, strValue);

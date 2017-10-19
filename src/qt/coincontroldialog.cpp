@@ -6,7 +6,7 @@
 #include "ui_coincontroldialog.h"
 
 #include "addresstablemodel.h"
-#include "bitcoinunits.h"
+#include "sarielsazunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "platformstyle.h"
@@ -663,7 +663,7 @@ void CoinControlDialog::updateView()
             {
                 sAddress = QString::fromStdString(EncodeDestination(outputAddress));
 
-                // if listMode or change => show bitcoin address. In tree mode, address is not shown again for direct wallet address outputs
+                // if listMode or change => show sarielsaz address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))
                     itemOutput->setText(COLUMN_ADDRESS, sAddress);
             }
