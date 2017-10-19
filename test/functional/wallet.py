@@ -353,7 +353,7 @@ class WalletTest(BitcoinTestFramework):
             '-reindex',
             '-zapwallettxes=1',
             '-zapwallettxes=2',
-            # disabled until issue is fixed: https://github.com/bitcoin/bitcoin/issues/7463
+            # disabled until issue is fixed: https://github.com/sarielsaz/sarielsaz/issues/7463
             # '-salvagewallet',
         ]
         chainlimit = 6

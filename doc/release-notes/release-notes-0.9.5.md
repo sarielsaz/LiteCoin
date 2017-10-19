@@ -8,7 +8,7 @@ recommended.
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/bitcoin/bitcoin/issues
+  https://github.com/sarielsaz/sarielsaz/issues
 
 How to Upgrade
 ===============
