@@ -18,6 +18,7 @@ const std::string CLIENT_NAME("Sariel");
 /**
  * Client version number
  */
+#define CLIENT_VERSION_SUFFIX ""
 #define CLIENT_VERSION_MAJOR 1
 #define CLIENT_VERSION_MINOR 0
 #define CLIENT_VERSION_REVISION 0
@@ -70,7 +71,7 @@ const std::string CLIENT_NAME("Sariel");
 #endif
 #endif
 
-const std::string CLIENT_BUILD(BUILD_DESC CLIENT_VERSION_SUFFIX);
+const std::string CLIENT_BUILD(BUILD_DESC,CLIENT_VERSION_SUFFIX);
 
 static std::string FormatVersion(int nVersion)
 {

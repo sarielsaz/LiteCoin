@@ -283,7 +283,7 @@ public:
         pchMessageStart[0] = 0x4a;
         pchMessageStart[1] = 0xbf;
         pchMessageStart[2] = 0x75;
-        pchMessageStart[3] = 0xiz;
+        pchMessageStart[3] = 0x89;
         nDefaultPort = 18890;
         nPruneAfterHeight = 1000;
 
