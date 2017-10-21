@@ -1,5 +1,5 @@
 ---
-name: "sarielsaz-osx-0.16"
+name: "sarielsaz-osx-1.0.0.1"
 enable_cache: true
 suites:
 - "trusty"
