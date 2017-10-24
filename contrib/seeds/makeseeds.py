@@ -23,7 +23,7 @@ import sys
 import dns.resolver
 import collections
 
-PATTERN_IPV4 = re.compile(r"^((\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})):8888$")
+PATTERN_IPV4 = re.compile(r"^((\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})):9999$")
 PATTERN_IPV6 = re.compile(r"^\[([0-9a-z:]+)\]:8888$")
 PATTERN_ONION = re.compile(r"^([abcdefghijklmnopqrstuvwxyz234567]{16}\.onion):(\d+)$")
 PATTERN_AGENT = re.compile(r"^(/Satoshi:0.13.(1|2|99)/|/Satoshi:0.14.(0|1|2|99)/)$")
